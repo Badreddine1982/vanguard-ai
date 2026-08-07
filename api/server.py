@@ -1,8 +1,9 @@
 from typing import Any, Dict, Optional
 
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
+from agent.intelligence import DECISION_PATHS
 from agent.orchestrator import VanguardOrchestrator
 from utils.logger import logger
 
@@ -26,7 +27,7 @@ class DiagnoseRequest(BaseModel):
 class FeedbackRequest(BaseModel):
     features: Dict[str, float]
     context: Dict[str, float]
-    correct_path: int
+    correct_path: int = Field(..., ge=0, le=len(DECISION_PATHS) - 1)
 
 
 app = FastAPI(

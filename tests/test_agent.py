@@ -1,9 +1,11 @@
 import pytest
 import torch
+from pydantic import ValidationError
 
 from agent.intelligence import VanguardIntelligence
 from agent.models.router import AdaptiveRouter
 from agent.orchestrator import VanguardOrchestrator
+from api.server import FeedbackRequest
 
 
 class TestVanguardAgent:
@@ -73,6 +75,11 @@ class TestVanguardAgent:
         context = self.intelligence.get_system_context()
         loss = self.orchestrator.learn_from_feedback(features, context, 1)
         assert loss > 0
+
+    def test_feedback_rejects_out_of_range_path(self):
+        """اختبار رفض مسار قرار خارج النطاق"""
+        with pytest.raises(ValidationError):
+            FeedbackRequest(features={}, context={}, correct_path=99)
 
     def test_health_check(self):
         """اختبار فحص صحة النظام"""
