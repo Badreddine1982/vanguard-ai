@@ -1,0 +1,1 @@
+"""VANGUARD core state contracts."""
