@@ -1,0 +1,18 @@
+component:
+  id: vanguard-ai
+  version: 0.1.0-poc
+contracts:
+  - id: runtime.execution
+    version: ">=1.0,<2.0"
+provides:
+  - ai.inference
+  - ai.diagnosis
+requires:
+  - runtime.execution
+compatibility:
+  os: vanguard-os
+  minimum: 0.1.0
+knowledge:
+  publish: true
+  consume: true
+  evidence_required: true
