@@ -1,0 +1,17 @@
+knowledge:
+  schema: "v0.1"
+  id: vcp-kf-poc-01.shared-evidence-boundary
+  type: pattern
+  status: hypothesis
+  source:
+    component: vanguard-ai
+    commit: local-poc
+  statement: >
+    Independent repositories may share seeds, patterns, and evidence
+    without sharing protected state, secrets, or execution authority.
+  evidence:
+    local_schema_validation: pending
+    cross_repository_reproduction: pending
+  promotion:
+    required: independent_reproduction
+    verifier: VERITAS
