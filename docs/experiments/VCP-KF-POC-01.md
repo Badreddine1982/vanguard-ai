@@ -12,6 +12,31 @@ execution authority, and acceptance decisions.
 
 Knowledge can cross repository boundaries; authority must not.
 
+## Governing library law — Evidence-Gated Persistence
+
+> **Probability may enter the loop, but it does not leave the loop as truth without confirmation.**
+
+Every hypothesis, probability, or candidate pattern that enters the knowledge
+loop must leave a durable trace. Its long-term state is one of:
+
+- **confirmed fact** — independently reproduced and/or formally verified, with provenance;
+- **potential error** — not confirmed, contradicted, or architecturally suspect, but retained as a reusable warning/evidence record.
+
+A failed experiment is therefore **not discarded by default**. The failure,
+its observed conditions, provenance, and current interpretation are retained
+so later experiments can reuse the evidence.
+
+**No confirmation, no adoption.**
+
+The following are deliberately *not* decided by this law:
+
+- pruning policy;
+- deletion/retention rights beyond durable evidence preservation;
+- whether the current architecture is the correct layer for pruning;
+- final authority for changing or removing historical evidence.
+
+Those are deferred architectural questions and must be reviewed separately.
+
 ## Loop model
 
 ```
@@ -20,6 +45,12 @@ MCTS → Seed/Pattern → VERITAS/Lean → Evidence
                                       │
                                       ▼
                               Knowledge Fabric
+                                      │
+                     ┌────────────────┴────────────────┐
+                     ▼                                 ▼
+              confirmed fact                    potential error
+                     │                                 │
+                     └────────── durable knowledge ────┘
                                       │
                                       ▼
 External Loop
@@ -37,6 +68,8 @@ Repository → Contract/Integration Test → Evidence
 - benchmarks
 - provenance
 - compatibility observations
+- confirmed facts
+- potential-error records
 
 ## Not shared
 
@@ -61,6 +94,8 @@ treated as evidence of implementation.
 - dependency-free structural validator
 - GitHub Actions validation workflow
 - explicit hypothesis/promotion boundary
+- evidence-gated persistence rule
+- potential-error retention record
 
 ## Acceptance rule
 
@@ -68,6 +103,11 @@ A knowledge artifact remains `hypothesis` until independent reproduction
 and verification produce sufficient evidence. A successful CI run proves
 schema/structure validity only; it does not prove the architectural
 hypothesis.
+
+A failure may be promoted to a **potential-error record** when it is
+reproducible or otherwise supported by traceable evidence. This preserves
+the information value of failure without treating the suspected cause as
+fact.
 
 ## Next experiment
 
@@ -80,6 +120,7 @@ with:
 4. cross-repository evidence artifact
 5. independent reproduction
 6. generated compatibility matrix
+7. propagation of confirmed facts and potential-error records
 
 ## Result interpretation
 
@@ -101,3 +142,6 @@ It does **not** mean:
 If repeated independent experiments support the hypothesis, the protocol
 may be promoted into VERITAS-AIXI architecture documentation. Until then,
 this file remains an experimental record.
+
+The governing law itself should likewise be treated as a proposed library
+law until the broader library review confirms it.
