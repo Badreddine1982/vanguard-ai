@@ -1,0 +1,28 @@
+knowledge:
+  schema: "v0.1"
+  id: vcp-kf-poc-01.evidence-gated-persistence-law
+  type: potential_error
+  status: open
+  source:
+    component: vanguard-ai
+    experiment: VCP/KF-POC-01
+    commit: 29b2686e092ad14cf5d39675823aa9d076459c20
+  statement: >
+    The current knowledge architecture may not yet be the correct layer
+    for deciding pruning, deletion, or retention rights. The governing
+    persistence law therefore preserves evidence while deferring those
+    architectural rights to a later review.
+  observed:
+    principle: "Probability may enter the loop, but it does not leave the loop as truth without confirmation."
+    failure_handling: "A failed experiment is retained as evidence and may enter the potential-error record."
+  evidence:
+    current_validation: pending
+    independent_reproduction: pending
+    architectural_review: pending
+  disposition:
+    retain: true
+    adopt_as_fact: false
+    prune_decision: deferred
+  review:
+    required: true
+    verifier: VERITAS
