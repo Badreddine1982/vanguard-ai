@@ -1,0 +1,21 @@
+name: VCP-KF-POC-01
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - experiment/vcp-kf-poc-01
+
+permissions:
+  contents: read
+
+jobs:
+  knowledge-compatibility:
+    name: vcp-kf / validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validate component and knowledge boundary
+        run: python scripts/vcp_kf_validate.py
